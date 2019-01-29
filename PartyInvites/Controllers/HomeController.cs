@@ -10,20 +10,32 @@ namespace PartyInvites.Controllers
 {
     public class HomeController : Controller
     {
-        public IActionResult Index()
+        public ViewResult Index()
+        {
+            int hour = DateTime.Now.Hour;
+            ViewBag.Greeting = hour < 12 ? "Good morning" : "Good Afternoon";
+            return View("MyView");
+        }
+
+        public ViewResult RsvpForm()
         {
             return View();
         }
 
-        public IActionResult Privacy()
-        {
-            return View();
-        }
+        //public IActionResult Index()
+        //{
+        //    return View();
+        //}
 
-        [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
-        public IActionResult Error()
-        {
-            return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
-        }
+        //public IActionResult Privacy()
+        //{
+        //    return View();
+        //}
+
+        //[ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
+        //public IActionResult Error()
+        //{
+        //    return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
+        //}
     }
 }
